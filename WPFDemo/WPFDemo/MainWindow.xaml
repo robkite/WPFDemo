@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="WPF Demo" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!-- Filter / Sorting Options -->
+            <TextBox Grid.Row="0" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+
+            <!-- Data -->
+            <DataGrid Grid.Row="1" ItemsSource="{Binding DataCollection}" />
+        </Grid>
+        <!-- End Main Content -->
+
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <Label Content="Ready" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
